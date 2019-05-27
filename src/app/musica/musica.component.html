@@ -12,5 +12,10 @@
     <i class="text-muted fas fa-tag"></i>
     &nbsp;
     {{musica.genero.nome}}
+    <br>
+    <button type="button" class="btn btn-primary" (click)="disco.g(conta)">Gostei</button>
+    <button type="button" class="btn btn-danger" >Não Gostei</button>
+    <br>
+    <p>{{disco.g(gostar)}}</p>
   </div>
 </section>

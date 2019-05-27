@@ -8,6 +8,8 @@ export class DiscoService {
   generos = [];
   artistas = [];
   musicas = [];
+  gostar = null;
+  naoGostar = 0;
 
   constructor() {
     this.adicionarGenero('Samba de Raiz');
@@ -15,23 +17,23 @@ export class DiscoService {
     this.adicionarGenero('Sucessos Gospel');
     this.adicionarGenero('Bossa Nova');
 
-    this.adicionarMusica('O Show Tem Que Continuar', ['Beth Carvalho'], 'Samba de Raiz');
-    this.adicionarMusica('Foi Um Rio Que Passou Em Minha Vida', ['Paulinho da Viola'], 'Samba de Raiz');
-    this.adicionarMusica('Canta Canta, Minha Gente', ['Martinho Da Vila'], 'Samba de Raiz');
-    this.adicionarMusica('Deixa A Vida Me Levar', ['Zeca Pagodinho'], 'Samba de Raiz');
-    this.adicionarMusica('Brisa', ['IZA'], 'Pop Brasil');
-    this.adicionarMusica('Onda diferente (feat. Papatinho)', ['Anitta', 'Ludmilla', 'Snoop Dogg', 'Papatinho'], 'Pop Brasil');
-    this.adicionarMusica('Pior Que Possa Imaginar', ['Luísa Sonza'], 'Pop Brasil');
-    this.adicionarMusica('Hoje Lembrei Do Teu Amor', ['Tiago Iorc'], 'Pop Brasil');
-    this.adicionarMusica('Ousado Amor', ['Isaias Saad'], 'Sucessos Gospel');
-    this.adicionarMusica('Tua Graça Me Basta', ['Davi Sacer', 'Preto no Branco'], 'Sucessos Gospel');
-    this.adicionarMusica('Ele Vem - Ao Vivo', ['Gabriel Guedes de Almeida', 'Gabriela Rocha'], 'Sucessos Gospel');
-    this.adicionarMusica('Autor da Vida', ['Aline Barros'], 'Sucessos Gospel');
-    this.adicionarMusica('Chega de Saudade', ['João Gilberto'], 'Bossa Nova');
-    this.adicionarMusica('Samba Da Benção', ['Vinícius de Moraes'], 'Bossa Nova');
-    this.adicionarMusica('Desafinado', ['João Gilberto'], 'Bossa Nova');
-    this.adicionarMusica('Fotografia', ['Elis Regina', 'Antônio Carlos Jobim'], 'Bossa Nova');
-    this.adicionarMusica('Pela luz dos olhos teus', ['Antônio Carlos Jobim', 'Miúcha'], 'Bossa Nova');
+    this.adicionarMusica('O Show Tem Que Continuar', ['Beth Carvalho'], 'Samba de Raiz', 0, 0);
+    this.adicionarMusica('Foi Um Rio Que Passou Em Minha Vida', ['Paulinho da Viola'], 'Samba de Raiz', 0, 0);
+    this.adicionarMusica('Canta Canta, Minha Gente', ['Martinho Da Vila'], 'Samba de Raiz', 0, 0);
+    this.adicionarMusica('Deixa A Vida Me Levar', ['Zeca Pagodinho'], 'Samba de Raiz', 0, 0);
+    this.adicionarMusica('Brisa', ['IZA'], 'Pop Brasil', 0, 0);
+    this.adicionarMusica('Onda diferente (feat. Papatinho)', ['Anitta', 'Ludmilla', 'Snoop Dogg', 'Papatinho'], 'Pop Brasil', 0, 0);
+    this.adicionarMusica('Pior Que Possa Imaginar', ['Luísa Sonza'], 'Pop Brasil', 0, 0);
+    this.adicionarMusica('Hoje Lembrei Do Teu Amor', ['Tiago Iorc'], 'Pop Brasil', 0, 0);
+    this.adicionarMusica('Ousado Amor', ['Isaias Saad'], 'Sucessos Gospel', 0, 0);
+    this.adicionarMusica('Tua Graça Me Basta', ['Davi Sacer', 'Preto no Branco'], 'Sucessos Gospel', 0, 0);
+    this.adicionarMusica('Ele Vem - Ao Vivo', ['Gabriel Guedes de Almeida', 'Gabriela Rocha'], 'Sucessos Gospel', 0, 0);
+    this.adicionarMusica('Autor da Vida', ['Aline Barros'], 'Sucessos Gospel', 0, 0);
+    this.adicionarMusica('Chega de Saudade', ['João Gilberto'], 'Bossa Nova', 0, 0);
+    this.adicionarMusica('Samba Da Benção', ['Vinícius de Moraes'], 'Bossa Nova', 0, 0);
+    this.adicionarMusica('Desafinado', ['João Gilberto'], 'Bossa Nova', 0, 0);
+    this.adicionarMusica('Fotografia', ['Elis Regina', 'Antônio Carlos Jobim'], 'Bossa Nova', 0, 0);
+    this.adicionarMusica('Pela luz dos olhos teus', ['Antônio Carlos Jobim', 'Miúcha'], 'Bossa Nova', 0, 0);
 
   }
 
@@ -108,7 +110,7 @@ export class DiscoService {
    * @param artistas Os artistas da música; pode ser array de string ou array de número (identificador)
    * @param genero O gênero da música; pode ser string ou identificador
    */
-  adicionarMusica(titulo, artistas, genero) {
+  adicionarMusica(titulo, artistas, genero, gostar, naoGostar) {
     let g = this.encontrarGenero(genero);
     if (!g) {
       g = this.adicionarGenero(genero);
@@ -129,7 +131,9 @@ export class DiscoService {
       id: this.musicas.length + 1,
       titulo,
       idGenero: g.id,
-      artistas: listaArtistas
+      artistas: listaArtistas,
+      gostar: gostar,
+      naoGostar: naoGostar
     };
     this.musicas.push(musica);
     return musica;
@@ -242,5 +246,11 @@ export class DiscoService {
       this.preencherObjetoArtista(artista);
     }
     return this.artistas;
+  }
+  g(gostar){
+    if(gostar >0){
+      gostar += 1;
+      return gostar
+    }
   }
 }
