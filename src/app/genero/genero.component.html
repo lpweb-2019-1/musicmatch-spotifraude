@@ -1,3 +1,14 @@
-<p>
-  {{genero.nome}}
-</p>
+    
+<section *ngIf="this.genero">
+  <h1 class="mb-4 mt-5 border-bottom"><i class="text-muted fas fa-tag"></i> {{ this.genero.nome }}</h1>
+  <span *ngFor="let musica of disco.listaDeMusicas()">
+    <a [routerLink]="['/musicas', musica.id]" *ngIf="genero.id === musica.genero.id">
+      <div>
+        <b>{{ musica.genero.nome }}</b> -
+        <span *ngFor="let artista of musica.artistas; last as ultimo">
+          {{ artista.nome }}<span *ngIf="!ultimo">, </span>
+        </span>
+      </div>
+    </a>
+  </span>
+</section>

@@ -259,7 +259,12 @@ export class DiscoService {
       musica.gostar--;
     }
   }
-  musicasDoGenero(genero){
-
+  /**  musicasDoGenero(genero){
+    genero.musicas = this.musicas.filter(musica => musica.idGenero == genero.id);
+    for(let musica of genero.musicas){
+      this.preencherObjetoMusica(musica);
+    }
+    return genero.musica;
   }
+  */
 }
