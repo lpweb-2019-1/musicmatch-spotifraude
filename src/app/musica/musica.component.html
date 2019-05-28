@@ -11,11 +11,15 @@
   <div>
     <i class="text-muted fas fa-tag"></i>
     &nbsp;
-    {{musica.genero.nome}}
+    <a [routerLink]="['/genero', musica.genero.id]">{{musica.genero.nome}}</a><span *ngIf="!ultimo">, </span>
     <br>
-    <button type="button" class="btn btn-primary" (click)="disco.g(conta)">Gostei</button>
-    <button type="button" class="btn btn-danger" >Não Gostei</button>
+    <button type="button" class="btn btn-primary" (click)="disco.gostar(musica)">Gostei</button>
+    <button type="button" class="btn btn-danger" (click)="disco.naoGosta(musica)">Não Gostei</button>
     <br>
-    <p>{{disco.g(gostar)}}</p>
+    <p>
+      Gostaram {{musica.gostar}}
+      <br>
+      Não Gostaram {{musica.naoGostar}}
+    </p>
   </div>
 </section>
