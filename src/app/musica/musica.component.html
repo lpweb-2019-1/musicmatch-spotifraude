@@ -13,19 +13,25 @@
     &nbsp;
     <a [routerLink]="['/genero', musica.genero.id]">{{musica.genero.nome}}</a><span *ngIf="!ultimo">, </span>
     <br>
-    <button type="button" class="btn btn-primary"  (click)="disco.gostar(musica)">
-      <small class="text-light">Gostei </small>
+    <button type="button" class="btn btn-outline-success"  (click)="disco.gostar(musica)">
+      <small class="text">Gostei </small>
       <i class="far fa-thumbs-up"></i>
     </button>
-    <button type="button" class="btn btn-danger" (click)="disco.naoGosta(musica)">
-      <small class="text-light">Não Gostei </small>
+    <button type="button" class="btn btn-outline-danger" (click)="disco.naoGosta(musica)">
+      <small class="text">Não Gostei </small>
       <i class="far fa-thumbs-down"></i>
     </button>
     <br>
     <p>
-      Gostaram {{musica.gostar}} <i class="far fa-smile"></i>
+      Gostaram {{musica.gostar}}
+      <strong class="text-success">
+        <i class="far fa-smile"></i>
+      </strong>
       <br>
-      Não Gostaram {{musica.naoGostar}} <i class="far fa-frown"></i>
+      Não Gostaram {{musica.naoGostar}}
+      <strong class="text-danger">
+        <i class="far fa-frown"></i>
+      </strong>
     </p>
   </div>
 </section>
